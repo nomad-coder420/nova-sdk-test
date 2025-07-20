@@ -1,15 +1,5 @@
 {
   "objects": {
-    "test-object-1": {
-      "type": "Param",
-      "keys": {
-        "color": {
-          "type": "text",
-          "description": "Number of tutorial steps",
-          "default": "red"
-        }
-      }
-    },
     "onboarding-tutorial": {
       "type": "Level",
       "keys": {
@@ -203,6 +193,15 @@
           "description": "Inventory grid layout",
           "default": "4x5"
         }
+      }
+    }
+  },
+  "experiences": {
+    "onboarding-experience": {
+      "description": "Onboarding Experience",
+      "objects": {
+        "onboarding-tutorial": {},
+        "welcome-popup": {}
       }
     }
   }
