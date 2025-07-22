@@ -1,62 +1,22 @@
 {
   "objects": {
-    "onboarding-tutorial": {
+    "tutorial-flow": {
       "type": "Level",
       "keys": {
-        "tutorial_steps": {
+        "step_count": {
           "type": "number",
           "description": "Number of tutorial steps",
-          "default": 5
+          "default": 4
         },
-        "skip_enabled": {
+        "skippable": {
           "type": "boolean",
-          "description": "Allow users to skip tutorial",
+          "description": "Allow skipping tutorial",
           "default": false
         },
-        "tutorial_theme": {
-          "type": "text",
-          "description": "Visual theme for tutorial",
-          "default": "standard"
-        }
-      }
-    },
-    "welcome-popup": {
-      "type": "Popup",
-      "keys": {
-        "popup_title": {
-          "type": "text",
-          "description": "Title text for welcome popup",
-          "default": "Welcome!"
-        },
-        "show_rewards": {
-          "type": "boolean",
-          "description": "Show welcome rewards",
-          "default": true
-        },
-        "reward_amount": {
+        "reward_on_complete": {
           "type": "number",
-          "description": "Amount of welcome coins",
+          "description": "Coins rewarded after tutorial",
           "default": 100
-        }
-      }
-    },
-    "game-difficulty": {
-      "type": "Param",
-      "keys": {
-        "difficulty_level": {
-          "type": "text",
-          "description": "Game difficulty setting",
-          "default": "normal"
-        },
-        "enemy_health_multiplier": {
-          "type": "number",
-          "description": "Enemy health multiplier",
-          "default": 1.0
-        },
-        "drop_rate_bonus": {
-          "type": "number",
-          "description": "Item drop rate bonus",
-          "default": 0.0
         }
       }
     },
@@ -66,9 +26,9 @@
         "offer_title": {
           "type": "text",
           "description": "Special offer title",
-          "default": "Limited Time Offer!"
+          "default": "Starter Pack!"
         },
-        "discount_percentage": {
+        "discount_percent": {
           "type": "number",
           "description": "Discount percentage",
           "default": 50
@@ -77,45 +37,20 @@
           "type": "boolean",
           "description": "Show countdown timer",
           "default": true
-        },
-        "offer_background": {
-          "type": "text",
-          "description": "Background theme",
-          "default": "gold"
-        }
-      }
-    },
-    "level-rewards": {
-      "type": "Level",
-      "keys": {
-        "bonus_coins": {
-          "type": "number",
-          "description": "Bonus coins per level",
-          "default": 25
-        },
-        "bonus_gems": {
-          "type": "number",
-          "description": "Bonus gems per level",
-          "default": 1
-        },
-        "special_reward_enabled": {
-          "type": "boolean",
-          "description": "Enable special milestone rewards",
-          "default": false
         }
       }
     },
     "daily-quest": {
-      "type": "Level",
+      "type": "Quest",
       "keys": {
         "quest_count": {
           "type": "number",
           "description": "Number of daily quests",
           "default": 3
         },
-        "quest_difficulty": {
+        "difficulty": {
           "type": "text",
-          "description": "Base difficulty of quests",
+          "description": "Quest difficulty",
           "default": "easy"
         },
         "completion_reward": {
@@ -125,23 +60,43 @@
         }
       }
     },
+    "battle-pass": {
+      "type": "Progression",
+      "keys": {
+        "season_length_days": {
+          "type": "number",
+          "description": "Season duration in days",
+          "default": 60
+        },
+        "free_rewards": {
+          "type": "number",
+          "description": "Number of free rewards",
+          "default": 15
+        },
+        "premium_rewards": {
+          "type": "number",
+          "description": "Number of premium rewards",
+          "default": 30
+        },
+        "price_usd": {
+          "type": "number",
+          "description": "Premium pass price in USD",
+          "default": 9.99
+        }
+      }
+    },
     "ui-theme": {
       "type": "Param",
       "keys": {
         "primary_color": {
           "type": "text",
           "description": "Primary UI color",
-          "default": "#007bff"
+          "default": "#00BFFF"
         },
         "button_style": {
           "type": "text",
-          "description": "Button design style",
+          "description": "Button style",
           "default": "rounded"
-        },
-        "animation_speed": {
-          "type": "number",
-          "description": "UI animation speed multiplier",
-          "default": 1.0
         },
         "dark_mode": {
           "type": "boolean",
@@ -150,58 +105,133 @@
         }
       }
     },
-    "achievement-popup": {
-      "type": "Popup",
+    "push-notification": {
+      "type": "Notification",
       "keys": {
-        "celebration_effect": {
-          "type": "text",
-          "description": "Visual celebration effect",
-          "default": "confetti"
-        },
-        "sound_enabled": {
+        "enabled": {
           "type": "boolean",
-          "description": "Play achievement sound",
+          "description": "Enable push notifications",
           "default": true
         },
-        "auto_close_delay": {
-          "type": "number",
-          "description": "Auto close delay in seconds",
-          "default": 3
+        "reminder_time": {
+          "type": "text",
+          "description": "Time to send daily reminder",
+          "default": "18:00"
+        },
+        "message": {
+          "type": "text",
+          "description": "Notification message",
+          "default": "Come back for your daily reward!"
         }
       }
     },
-    "inventory-settings": {
+    "event-banner": {
+      "type": "Popup",
+      "keys": {
+        "banner_title": {
+          "type": "text",
+          "description": "Event banner title",
+          "default": "Spring Festival!"
+        },
+        "banner_color": {
+          "type": "text",
+          "description": "Banner color",
+          "default": "#FFD700"
+        },
+        "cta_text": {
+          "type": "text",
+          "description": "Call to action text",
+          "default": "Join Now"
+        }
+      }
+    },
+    "reward-mail": {
+      "type": "Notification",
+      "keys": {
+        "subject": {
+          "type": "text",
+          "description": "Mail subject",
+          "default": "Congratulations!"
+        },
+        "body": {
+          "type": "text",
+          "description": "Mail body",
+          "default": "You have earned a reward."
+        },
+        "attachment_coins": {
+          "type": "number",
+          "description": "Coins attached",
+          "default": 50
+        }
+      }
+    },
+    "accessibility": {
       "type": "Param",
       "keys": {
-        "max_slots": {
-          "type": "number",
-          "description": "Maximum inventory slots",
-          "default": 20
-        },
-        "auto_sort": {
+        "color_blind_mode": {
           "type": "boolean",
-          "description": "Enable automatic sorting",
-          "default": true
+          "description": "Enable color blind support",
+          "default": false
         },
-        "show_categories": {
-          "type": "boolean",
-          "description": "Show item categories",
-          "default": true
-        },
-        "grid_size": {
+        "text_size": {
           "type": "text",
-          "description": "Inventory grid layout",
-          "default": "4x5"
+          "description": "UI text size",
+          "default": "normal"
+        },
+        "screen_reader": {
+          "type": "boolean",
+          "description": "Enable screen reader",
+          "default": false
         }
       }
     }
   },
   "experiences": {
-    "onboarding-experience": {
-      "description": "Onboarding Experience",
+    "onboarding": {
+      "description": "Guided onboarding for new players",
       "objects": {
-        "onboarding-tutorial": {},
-        "welcome-popup": {}
+        "tutorial-flow": {},
+        "shop-offer": {},
+        "ui-theme": {}
+      }
+    },
+    "returning-player": {
+      "description": "Special offers and reminders for returning players",
+      "objects": {
+        "shop-offer": {},
+        "push-notification": {},
+        "reward-mail": {}
+      }
+    },
+    "high-spender": {
+      "description": "Premium experience for high-spending players",
+      "objects": {
+        "shop-offer": {},
+        "battle-pass": {},
+        "ui-theme": {}
+      }
+    },
+    "event": {
+      "description": "Personalized experience during special events",
+      "objects": {
+        "event-banner": {},
+        "shop-offer": {},
+        "daily-quest": {}
+      }
+    },
+    "mobile": {
+      "description": "Optimized experience for mobile players",
+      "objects": {
+        "ui-theme": {},
+        "push-notification": {},
+        "accessibility": {}
+      }
+    },
+    "accessibility": {
+      "description": "Enhanced accessibility for players with disabilities",
+      "objects": {
+        "accessibility": {},
+        "ui-theme": {}
       }
     }
   }

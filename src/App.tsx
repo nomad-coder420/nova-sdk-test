@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { useNova, useNovaObject } from "nova-react-sdk";
+import { useNova, useNovaExperience } from "nova-react-sdk";
 
 const MyComponent = () => {
-  const { props: testButtonProps } = useNovaObject("test-object-1");
+  const { objects } = useNovaExperience("onboarding");
 
-  return (
-    <button style={{ backgroundColor: testButtonProps?.color }}>
-      Test Button
-    </button>
-  );
+  const tutorialFlow = objects?.["tutorial-flow"];
+
+  return <p>{JSON.stringify(tutorialFlow)}</p>;
 };
 
 const App = () => {
-  const { setUser, loadAllObjects, trackEvent, state } = useNova();
+  const { setUser, loadAllExperiences, trackEvent, state } = useNova();
 
   const [novaLoaded, setNovaLoaded] = useState(false);
 
@@ -30,20 +28,20 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const loadNovaObjects = async () => {
-      await loadAllObjects();
+    const loadNovaExperiences = async () => {
+      await loadAllExperiences();
       setNovaLoaded(true);
     };
 
     if (state.user) {
-      loadNovaObjects();
+      loadNovaExperiences();
       trackEvent("Test Event", {
         test: "test",
       });
     }
   }, [state.user]);
 
-  console.log(state.objects);
+  console.log(state.experiences);
 
   return (
     <div className="App">
