@@ -190,48 +190,48 @@
     "onboarding": {
       "description": "Guided onboarding for new players",
       "objects": {
-        "tutorial-flow": {},
-        "shop-offer": {},
-        "ui-theme": {}
+        "tutorial-flow": true,
+        "shop-offer": true,
+        "ui-theme": true
       }
     },
     "returning-player": {
       "description": "Special offers and reminders for returning players",
       "objects": {
-        "shop-offer": {},
-        "push-notification": {},
-        "reward-mail": {}
+        "shop-offer": true,
+        "push-notification": true,
+        "reward-mail": true
       }
     },
     "high-spender": {
       "description": "Premium experience for high-spending players",
       "objects": {
-        "shop-offer": {},
-        "battle-pass": {},
-        "ui-theme": {}
+        "shop-offer": true,
+        "battle-pass": true,
+        "ui-theme": true
       }
     },
     "event": {
       "description": "Personalized experience during special events",
       "objects": {
-        "event-banner": {},
-        "shop-offer": {},
-        "daily-quest": {}
+        "event-banner": true,
+        "shop-offer": true,
+        "daily-quest": true
       }
     },
     "mobile": {
       "description": "Optimized experience for mobile players",
       "objects": {
-        "ui-theme": {},
-        "push-notification": {},
-        "accessibility": {}
+        "ui-theme": true,
+        "push-notification": true,
+        "accessibility": true
       }
     },
     "accessibility": {
       "description": "Enhanced accessibility for players with disabilities",
       "objects": {
-        "accessibility": {},
-        "ui-theme": {}
+        "accessibility": true,
+        "ui-theme": true
       }
     }
   }
